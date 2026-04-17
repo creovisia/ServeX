@@ -201,6 +201,42 @@ function App() {
         </div>
       </motion.header>
 
+         {/* Recommended Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="bg-gradient-to-r from-orange-100 to-red-100 rounded-3xl p-8 shadow-xl"
+        >
+          <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
+            {language === 'en' ? 'Recommended for You' : 'உங்களுக்கு பரிந்துரைக்கப்படுகிறது'}
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {popularItems.map((item, index) => (
+              <motion.div
+                key={item.id}
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4, delay: 0.5 + index * 0.1 }}
+                className="bg-white rounded-xl p-4 shadow-md hover:shadow-lg transition-shadow duration-300"
+              >
+                <div className="flex items-center space-x-4">
+                  <img
+                    src={item.image}
+                    alt={item.name[language]}
+                    className="w-20 h-20 rounded-lg object-cover"
+                  />
+                  <div className="flex-1">
+                    <h4 className="font-bold text-gray-900">{item.name[language]}</h4>
+                    <p className="text-orange-600 font-semibold">₹{item.price}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </main>
+
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pb-32">
         {/* Hero Section */}
@@ -274,42 +310,7 @@ function App() {
           ))}
         </motion.div>
 
-        {/* Recommended Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="bg-gradient-to-r from-orange-100 to-red-100 rounded-3xl p-8 shadow-xl"
-        >
-          <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
-            {language === 'en' ? 'Recommended for You' : 'உங்களுக்கு பரிந்துரைக்கப்படுகிறது'}
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {popularItems.map((item, index) => (
-              <motion.div
-                key={item.id}
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.4, delay: 0.5 + index * 0.1 }}
-                className="bg-white rounded-xl p-4 shadow-md hover:shadow-lg transition-shadow duration-300"
-              >
-                <div className="flex items-center space-x-4">
-                  <img
-                    src={item.image}
-                    alt={item.name[language]}
-                    className="w-20 h-20 rounded-lg object-cover"
-                  />
-                  <div className="flex-1">
-                    <h4 className="font-bold text-gray-900">{item.name[language]}</h4>
-                    <p className="text-orange-600 font-semibold">₹{item.price}</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-      </main>
-
+     
       {/* Cart Summary Bar */}
       <AnimatePresence>
         {totalItems > 0 && (
