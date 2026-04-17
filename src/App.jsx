@@ -235,7 +235,7 @@ function App() {
             ))}
           </div>
         </motion.div>
-      </main>
+      
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pb-32">
@@ -309,7 +309,7 @@ function App() {
             </motion.div>
           ))}
         </motion.div>
-
+</main>
      
       {/* Cart Summary Bar */}
       <AnimatePresence>
